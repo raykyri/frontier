@@ -550,7 +550,7 @@ impl<B, C, P, CT, BE, H: ExHashT> EthApiT for EthApi<B, C, P, CT, BE, H> where
 			.map_err(|err| internal_err(format!("fetch runtime account basic failed: {:?}", err)))?
 			.nonce.into();
 
-		Ok(nonce + 10)
+		Ok(nonce + U256::from(10))
 	}
 
 	fn block_transaction_count_by_hash(&self, hash: H256) -> Result<Option<U256>> {
