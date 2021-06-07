@@ -545,10 +545,14 @@ impl<B, C, P, CT, BE, H: ExHashT> EthApiT for EthApi<B, C, P, CT, BE, H> where
 			None => return Ok(U256::from(99)),
 		};
 
+            println!("Account id returned is: {}", id);
+
 		let nonce : U256 = self.client.runtime_api()
 			.account_basic(&id, address)
 			.map_err(|err| internal_err(format!("fetch runtime account basic failed: {:?}", err)))?
 			.nonce.into();
+
+            println!("Nonce is: {}", nonce);
 
 		Ok(nonce + U256::from(10))
 	}
