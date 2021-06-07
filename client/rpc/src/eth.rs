@@ -542,7 +542,7 @@ impl<B, C, P, CT, BE, H: ExHashT> EthApiT for EthApi<B, C, P, CT, BE, H> where
 
 		let id = match frontier_backend_client::native_block_id::<B, C>(self.client.as_ref(), self.backend.as_ref(), number)? {
 			Some(id) => id,
-			None => return Ok(U256::zero()),
+			None => return Ok(U256::from(99)),
 		};
 
 		let nonce = self.client.runtime_api()
